@@ -134,6 +134,32 @@ a {
   transition: opacity 0.5s ease;
 }
 
+/* Knapper er klosser: hard skygge, løfter seg ved peking og trykkes flate ved klikk.
+   På skjærematte er kant og skygge i kritt, ellers forsvinner de mot det mørke. */
+.kloss {
+  --kloss-strek: var(--color-blekk);
+  border: 2px solid var(--kloss-strek);
+  box-shadow: 5px 5px 0 var(--kloss-strek);
+  cursor: pointer;
+  transition:
+    transform 0.12s,
+    box-shadow 0.12s;
+}
+
+.matte .kloss {
+  --kloss-strek: var(--color-kritt);
+}
+
+.kloss:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 var(--kloss-strek);
+}
+
+.kloss:active {
+  transform: translate(5px, 5px);
+  box-shadow: 0 0 0 var(--kloss-strek);
+}
+
 /* Trinn og notat i heroen glir inn når de skifter. */
 .glir-inn {
   animation: glir-inn 0.3s ease-out;
@@ -143,6 +169,30 @@ a {
   from {
     opacity: 0;
     transform: translateY(0.5rem);
+  }
+}
+
+/* Menyen i toppen er en tommestokk: korte streker hver 8. px og lange hver 40. */
+.tommestokk-meny {
+  background-image:
+    repeating-linear-gradient(90deg, var(--color-gul-tekst) 0 1.5px, transparent 1.5px 40px),
+    repeating-linear-gradient(90deg, var(--color-gul-tekst) 0 1px, transparent 1px 8px);
+  background-size:
+    100% 11px,
+    100% 6px;
+  background-repeat: no-repeat;
+}
+
+/* Mobilmenyen foldes ut ovenfra, som et ledd på tommestokken. */
+.fold-ut {
+  transform-origin: top;
+  animation: fold-ut 0.22s ease-out;
+}
+
+@keyframes fold-ut {
+  from {
+    opacity: 0;
+    transform: scaleY(0.4);
   }
 }
 
@@ -160,8 +210,12 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .glir-inn {
+  .glir-inn,
+  .fold-ut {
     animation: none;
+  }
+  .kloss {
+    transition: none;
   }
   html {
     scroll-behavior: auto;

@@ -74,9 +74,9 @@ export default function OmDemoen() {
           <p className="mt-8">
             <a
               href="https://lilitlabs.com"
-              className="inline-flex min-h-12 items-center gap-3 bg-rod px-6 py-3 font-bold text-white no-underline hover:bg-rod-mork"
+              className="kloss inline-flex min-h-12 items-center bg-rod px-6 py-3 font-bold text-white no-underline hover:bg-rod-mork"
             >
-              Ta kontakt med Lilit Labs <span aria-hidden="true">→</span>
+              Ta kontakt med Lilit Labs
             </a>
           </p>
         </div>

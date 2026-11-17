@@ -1,14 +1,13 @@
 import Link from "next/link";
 
-// Hovedknapp: låverød med hvit tekst. Bare én per valg.
+// Hovedknapp: låverød kloss med hvit tekst. Bare én per valg.
 export function Knapp({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <Link
       href={href}
-      className="inline-flex min-h-12 items-center gap-3 bg-rod px-6 py-3 font-bold text-white no-underline hover:bg-rod-mork"
+      className="kloss inline-flex min-h-12 items-center bg-rod px-6 py-3 font-bold text-white no-underline hover:bg-rod-mork"
     >
       {children}
-      <span aria-hidden="true">→</span>
     </Link>
   );
 }
@@ -18,7 +17,7 @@ export function Strekknapp({ href, children }: { href: string; children: React.R
   return (
     <Link
       href={href}
-      className="inline-flex min-h-12 items-center gap-3 border-2 border-blekk bg-papir px-6 py-3 font-bold text-blekk no-underline hover:bg-kort"
+      className="kloss inline-flex min-h-12 items-center bg-papir px-6 py-3 font-bold text-blekk no-underline hover:bg-kort"
     >
       {children}
     </Link>

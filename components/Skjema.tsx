@@ -20,7 +20,7 @@ export function Skjema() {
         <button
           type="button"
           onClick={() => setSendt(false)}
-          className="mt-5 min-h-12 border-2 border-blekk bg-papir px-5 py-2 font-bold text-blekk hover:bg-white"
+          className="kloss mt-5 min-h-12 bg-papir px-5 py-2 font-bold text-blekk hover:bg-white"
         >
           Fyll ut på nytt
         </button>
@@ -60,7 +60,7 @@ export function Skjema() {
         Fortell kort hva du tenker på
         <textarea name="melding" rows={4} className={felt} placeholder="Vi trenger større stue mot hagen." />
       </label>
-      <button type="submit" className="mt-6 min-h-12 bg-rod px-6 py-3 font-bold text-white hover:bg-rod-mork">
+      <button type="submit" className="kloss mt-6 min-h-12 bg-rod px-6 py-3 font-bold text-white hover:bg-rod-mork">
         Send forespørsel
       </button>
       <p className="mt-4 text-base text-dempet">Demo: skjemaet sender ikke noe.</p>

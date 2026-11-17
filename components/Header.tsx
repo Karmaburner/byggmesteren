@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { firma, meny } from "@/lib/firma";
+import { Meny } from "@/components/Meny";
+import { firma } from "@/lib/firma";
 
 // Logo: hus der taket er en gul vinkelhake, «Byggmesteren» stort og «i Hringariki» lite under.
 export function Logo() {
@@ -26,31 +27,10 @@ export function Logo() {
 
 export function Header() {
   return (
-    <header className="border-b-2 border-blekk bg-papir">
-      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-8 gap-y-3 px-5 py-4 sm:px-8">
+    <header className="bg-papir">
+      <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-x-3 gap-y-3 md:gap-x-10 px-5 py-4 sm:px-8">
         <Logo />
-        <nav aria-label="Hovedmeny">
-          <ul className="flex flex-wrap items-center gap-x-6 gap-y-1">
-            {meny.map((punkt) => (
-              <li key={punkt.href}>
-                <Link
-                  href={punkt.href}
-                  className="inline-flex min-h-11 items-center font-bold text-blekk no-underline hover:underline"
-                >
-                  {punkt.tekst}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <a
-                href={`tel:${firma.telefonLenke}`}
-                className="merke inline-flex min-h-11 items-center border-2 border-blekk px-3 text-blekk no-underline hover:bg-kort"
-              >
-                Tlf {firma.telefon}
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <Meny />
       </div>
     </header>
   );
