@@ -4,7 +4,8 @@ import { Ramme, SideTopp } from "@/components/Felles";
 
 export const metadata: Metadata = {
   title: "Om demoen",
-  description: "Byggmesteren i Hringariki finnes ikke. Siden er laget av Lilit Labs for å vise hva et byggefirma kan få.",
+  description:
+    "Byggmesteren i Hringariki finnes ikke. Siden er laget av Lilit Labs for å vise hva et byggefirma kan få.",
 };
 
 // Skrevet ut fra hva firmaet får, ikke hvordan det er bygd.
@@ -26,12 +27,14 @@ const punkter = [
   },
   {
     tittel: "Lett å lese",
-    tekst: "Stor skrift og sterk kontrast. Alt kan brukes med tastatur og stor zoom. Bevegelse stopper for dem som har slått det av.",
+    tekst:
+      "Stor skrift og sterk kontrast. Alt kan brukes med tastatur og stor zoom. Bevegelse stopper for dem som har slått det av.",
     href: "/tjenester/",
   },
   {
-    tittel: "Ingen bilder å vente på",
-    tekst: "Alle tegninger er streker i koden. Siden laster raskt, også på byggeplassen med dårlig dekning.",
+    tittel: "Rask å laste",
+    tekst:
+      "Tegningene er streker i koden og bildene er små. Siden laster raskt, også på byggeplassen med dårlig dekning.",
     href: "/prosjekter/",
   },
   {
@@ -68,8 +71,8 @@ export default function OmDemoen() {
         <div className="matte mt-12 border-2 border-blekk p-8 sm:p-12">
           <h2 className="max-w-2xl text-4xl sm:text-5xl">Driver du med bygg og vil ha noe lignende?</h2>
           <p className="mt-5 max-w-xl text-xl">
-            Navn, folk, priser, prosjekter og omtaler på denne siden er oppdiktet. Din side bygges rundt dine egne
-            jobber.
+            Navn, folk, priser, prosjekter og omtaler på denne siden er oppdiktet, og bildene er laget med KI. Din side
+            bygges rundt dine egne jobber.
           </p>
           <p className="mt-8">
             <a

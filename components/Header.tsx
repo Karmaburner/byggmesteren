@@ -5,7 +5,11 @@ import { firma } from "@/lib/firma";
 // Logo: hus der taket er en gul vinkelhake, «Byggmesteren» stort og «i Hringariki» lite under.
 export function Logo() {
   return (
-    <Link href="/" className="flex items-center gap-3 text-blekk no-underline" aria-label={`${firma.navn}, til forsiden`}>
+    <Link
+      href="/"
+      className="flex items-center gap-3 text-blekk no-underline"
+      aria-label={`${firma.navn}, til forsiden`}
+    >
       <svg viewBox="0 0 48 48" className="h-11 w-11 shrink-0" aria-hidden="true">
         <rect width="48" height="48" fill="#1f3d36" />
         <path d="M14.5 27v13h19V27M21.5 40v-8h5v8" fill="none" stroke="#f3eee2" strokeWidth="2.5" />

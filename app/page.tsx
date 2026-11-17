@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { Avsnitt, Eksempelmerke, Knapp, Kort, Mal, Ramme, Strekknapp } from "@/components/Felles";
+import { Avsnitt, Eksempelmerke, Foto, Knapp, Kort, Mal, Ramme, Strekknapp } from "@/components/Felles";
 import { Hero } from "@/components/Hero";
 import { Fortelling } from "@/components/Fortelling";
-import { Skisse } from "@/components/Tegninger";
 import { firma, folk, prosjekter, tjenester } from "@/lib/firma";
 
 export default function Forside() {
@@ -85,7 +84,10 @@ export default function Forside() {
                   { navn: "Byggetid", verdi: "5 måneder, som planlagt" },
                   { navn: "Utfall", verdi: "Levert til avtalt pris" },
                 ].map((rad) => (
-                  <div key={rad.navn} className="grid grid-cols-[7rem_minmax(0,1fr)] gap-3 border-b border-blekk/25 py-3">
+                  <div
+                    key={rad.navn}
+                    className="grid grid-cols-[7rem_minmax(0,1fr)] gap-3 border-b border-blekk/25 py-3"
+                  >
                     <dt className="merke text-dempet">{rad.navn}</dt>
                     <dd>{rad.verdi}</dd>
                   </div>
@@ -111,9 +113,7 @@ export default function Forside() {
             {prosjekter.map((p) => (
               <li key={p.nr}>
                 <Kort className="flex h-full flex-col">
-                  <div className="border-b-2 border-blekk bg-papir p-4">
-                    <Skisse navn={p.skisse} className="h-auto w-full" />
-                  </div>
+                  <Foto navn={p.foto} alt={p.fotoAlt} ramme={false} className="border-b-2 border-blekk" />
                   <div className="flex flex-1 flex-col p-5">
                     <p className="merke text-rod-mork">
                       {p.type} · {p.ar}
@@ -137,8 +137,9 @@ export default function Forside() {
             <p className="notat text-gul!">samme folk fra første befaring til siste list</p>
             <ul className="mt-6 grid gap-x-10 gap-y-8 sm:grid-cols-3">
               {folk.map((f) => (
-                <li key={f.navn} className="border-kritt/40 sm:border-l sm:pl-6 sm:first:border-l-0 sm:first:pl-0">
-                  <p className="font-display text-3xl font-semibold leading-tight">{f.navn}</p>
+                <li key={f.navn}>
+                  <Foto navn={f.foto} alt={f.fotoAlt} />
+                  <p className="mt-4 font-display text-3xl font-semibold leading-tight">{f.navn}</p>
                   <p className="mt-2">
                     {f.rolle}. {f.fakta}.
                   </p>
@@ -152,16 +153,24 @@ export default function Forside() {
       {/* Avslutning */}
       <section className="pt-20 sm:pt-28">
         <Ramme>
-          <div className="matte border-2 border-blekk p-8 sm:p-12">
-            <p className="merke">Start med tegningen</p>
-            <h2 className="mt-4 max-w-3xl text-5xl sm:text-6xl">Skal du bygge? Snakk med oss før du bestemmer deg.</h2>
-            <p className="mt-5 max-w-xl text-xl">Befaringen er gratis og du får svar på hva som lar seg gjøre.</p>
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
-              <Knapp href="/kontakt/">Be om befaring</Knapp>
-              <a href={`tel:${firma.telefonLenke}`} className="font-mono text-xl font-medium text-kritt underline">
-                {firma.telefon}
-              </a>
+          <div className="matte grid items-center gap-10 border-2 border-blekk p-8 sm:p-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
+            <div>
+              <p className="merke">Start med tegningen</p>
+              <h2 className="mt-4 max-w-3xl text-5xl sm:text-6xl">
+                Skal du bygge? Snakk med oss før du bestemmer deg.
+              </h2>
+              <p className="mt-5 max-w-xl text-xl">Befaringen er gratis og du får svar på hva som lar seg gjøre.</p>
+              <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+                <Knapp href="/kontakt/">Be om befaring</Knapp>
+                <a href={`tel:${firma.telefonLenke}`} className="font-mono text-xl font-medium text-kritt underline">
+                  {firma.telefon}
+                </a>
+              </div>
             </div>
+            <Foto
+              navn="verksted-inne"
+              alt="Arbeidsbenk i verkstedet med plantegninger, høvel og sagflis. Verktøy henger på veggen bak."
+            />
           </div>
         </Ramme>
       </section>

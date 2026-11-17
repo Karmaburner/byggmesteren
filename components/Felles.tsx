@@ -1,4 +1,40 @@
 import Link from "next/link";
+import storrelser from "@/lib/bildestorrelser.json";
+
+const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+// Foto fra public/bilder. GitHub Pages har ingen bildeserver, så vanlig <img> med faste mål er nok.
+// Alle foto er laget med KI og merkes som det i hjørnet.
+export function Foto({
+  navn,
+  alt,
+  className = "",
+  ramme = true,
+  tidlig = false,
+}: {
+  navn: string;
+  alt: string;
+  className?: string;
+  ramme?: boolean;
+  tidlig?: boolean;
+}) {
+  const s = (storrelser as Record<string, { bredde: number; hoyde: number }>)[navn];
+  return (
+    <figure className={`relative ${ramme ? "border-2 border-current" : ""} ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`${base}/bilder/${navn}.webp`}
+        alt={alt}
+        width={s.bredde}
+        height={s.hoyde}
+        loading={tidlig ? "eager" : "lazy"}
+        decoding="async"
+        className="block h-auto w-full"
+      />
+      <figcaption className="merke absolute bottom-2 left-2 bg-papir px-2 py-0.5 text-blekk">KI-bilde</figcaption>
+    </figure>
+  );
+}
 
 // Hovedknapp: låverød kloss med hvit tekst. Bare én per valg.
 export function Knapp({ href, children }: { href: string; children: React.ReactNode }) {
@@ -77,13 +113,7 @@ export function Ramme({ children, className = "" }: { children: React.ReactNode;
 }
 
 // Toppen på undersidene.
-export function SideTopp({
-  tittel,
-  children,
-}: {
-  tittel: string;
-  children?: React.ReactNode;
-}) {
+export function SideTopp({ tittel, children }: { tittel: string; children?: React.ReactNode }) {
   return (
     <Ramme className="pb-10 pt-10 sm:pt-14">
       <h1 className="max-w-3xl text-5xl sm:text-7xl">{tittel}</h1>

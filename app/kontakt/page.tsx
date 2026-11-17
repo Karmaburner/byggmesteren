@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Ramme, SideTopp } from "@/components/Felles";
+import { Foto, Ramme, SideTopp } from "@/components/Felles";
 import { Skjema } from "@/components/Skjema";
 import { apningstider, firma } from "@/lib/firma";
 
@@ -15,6 +15,14 @@ export default function Kontakt() {
         <p className="notat -rotate-1">befaringen er gratis</p>
         <p className="mt-3">Ring, send e-post eller fyll ut skjemaet. Vi svarer innen én arbeidsdag.</p>
       </SideTopp>
+
+      <Ramme className="pb-10">
+        <Foto
+          navn="verksted"
+          alt="Verkstedet til Byggmesteren: lavt bygg i trekledning med stor port, materialer stablet utenfor og åser i bakgrunnen."
+          tidlig
+        />
+      </Ramme>
 
       <Ramme className="grid gap-10 pb-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
         <div className="matte border-2 border-blekk p-7">

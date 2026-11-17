@@ -9,7 +9,11 @@ const ROD = "#8f2f1c";
 const GUL = "#e8b73a";
 const KRITT = "#f3eee2";
 
-const mono = { fontFamily: "var(--font-mono)", fontWeight: 500, letterSpacing: "0.04em" } as const;
+const mono = {
+  fontFamily: "var(--font-mono)",
+  fontWeight: 500,
+  letterSpacing: "0.04em",
+} as const;
 const hand = { fontFamily: "var(--font-hand)" } as const;
 
 const synlig = (ja: boolean) => ({ opacity: ja ? 1 : 0 });
@@ -48,14 +52,29 @@ export function Tilbygg({ steg, className = "" }: { steg: number; className?: st
       <path d="M224 140V420M24 280H224" stroke={BLEKK} strokeWidth="3" />
       <path d="M224 200v44M100 280h44" stroke={KORT} strokeWidth="5" />
       <g fill={BLEKK} fontSize="20" textAnchor="middle" style={mono}>
-        <text x="124" y="218">KJØKKEN</text>
-        <text x="124" y="358">SOVEROM</text>
-        <text x="324" y="288">STUE</text>
+        <text x="124" y="218">
+          KJØKKEN
+        </text>
+        <text x="124" y="358">
+          SOVEROM
+        </text>
+        <text x="324" y="288">
+          STUE
+        </text>
       </g>
 
       {/* 1: ønsket */}
       <g className="lag" style={synlig(steg === 1)}>
-        <rect x="424" y="160" width="168" height="240" fill="none" stroke={ROD} strokeWidth="3" strokeDasharray="10 8" />
+        <rect
+          x="424"
+          y="160"
+          width="168"
+          height="240"
+          fill="none"
+          stroke={ROD}
+          strokeWidth="3"
+          strokeDasharray="10 8"
+        />
         <text x="508" y="300" textAnchor="middle" fontSize="72" fill={ROD} style={hand}>
           ?
         </text>
@@ -96,7 +115,9 @@ export function Tilbygg({ steg, className = "" }: { steg: number; className?: st
           <path d="M620 160V400M612 160h16M612 400h16" />
         </g>
         <g fill={BLEKK} fontSize="20" textAnchor="middle" style={mono}>
-          <text x="508" y="116">4 200</text>
+          <text x="508" y="116">
+            4 200
+          </text>
           <text x="646" y="280" transform="rotate(-90 646 280)">
             6 000
           </text>
@@ -108,8 +129,12 @@ export function Tilbygg({ steg, className = "" }: { steg: number; className?: st
           <circle cx="424" cy="56" r="17" />
         </g>
         <g fill={BLEKK} fontSize="19" textAnchor="middle" style={mono}>
-          <text x="24" y="63">A</text>
-          <text x="424" y="63">B</text>
+          <text x="24" y="63">
+            A
+          </text>
+          <text x="424" y="63">
+            B
+          </text>
         </g>
       </g>
 
@@ -199,7 +224,9 @@ export function Snitt({ mork = false, className = "" }: { mork?: boolean; classN
         <path d="M120 398H440M120 390v16M440 390v16" />
       </g>
       <g fill={s} fontSize="20" style={mono}>
-        <text x="182" y="272">2 400</text>
+        <text x="182" y="272">
+          2 400
+        </text>
         <text x="280" y="424" textAnchor="middle">
           8 000
         </text>

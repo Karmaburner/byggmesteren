@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { firma, meny } from "@/lib/firma";
 
-const lenke =
-  "merke inline-flex min-h-11 items-center border-b-4 text-gul-tekst no-underline hover:border-gul-tekst";
+const lenke = "merke inline-flex min-h-11 items-center border-b-4 text-gul-tekst no-underline hover:border-gul-tekst";
 
 // Menyen står på en gul tommestokk med målestreker. Rød strek viser hvilken side du er på.
 // På mobil ligger tommestokken sammenfoldet bak en «Meny»-knapp og foldes ut når den trykkes.

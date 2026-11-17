@@ -1,0 +1,42 @@
+{
+  "tilbygg-bygging": {
+    "bredde": 1200,
+    "hoyde": 900
+  },
+  "tilbygg-ferdig": {
+    "bredde": 1200,
+    "hoyde": 900
+  },
+  "tommerhus": {
+    "bredde": 1200,
+    "hoyde": 900
+  },
+  "terrasse": {
+    "bredde": 1200,
+    "hoyde": 900
+  },
+  "sigurd": {
+    "bredde": 800,
+    "hoyde": 1000
+  },
+  "ragnhild": {
+    "bredde": 800,
+    "hoyde": 1000
+  },
+  "jonas": {
+    "bredde": 800,
+    "hoyde": 1000
+  },
+  "verksted": {
+    "bredde": 1400,
+    "hoyde": 788
+  },
+  "teamet": {
+    "bredde": 1000,
+    "hoyde": 1209
+  },
+  "verksted-inne": {
+    "bredde": 1200,
+    "hoyde": 800
+  }
+}

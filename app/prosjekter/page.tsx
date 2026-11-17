@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Eksempelmerke, Knapp, Kort, Ramme, SideTopp } from "@/components/Felles";
+import { Eksempelmerke, Foto, Knapp, Kort, Ramme, SideTopp } from "@/components/Felles";
 import { Skisse } from "@/components/Tegninger";
 import { prosjekter } from "@/lib/firma";
 
@@ -38,13 +38,16 @@ export default function Prosjekter() {
                   ))}
                 </dl>
               </div>
-              <Kort className="p-4">
-                <Skisse navn={p.skisse} className="h-auto w-full" />
-                <p className="merke mt-3 flex flex-wrap justify-between gap-x-4 border-t-2 border-blekk pt-2 text-dempet">
-                  <span>{p.type}</span>
-                  <span>Ikke i målestokk</span>
-                </p>
-              </Kort>
+              <div className="grid gap-5">
+                <Foto navn={p.foto} alt={p.fotoAlt} tidlig={i === 0} />
+                <Kort className="w-2/3 p-3">
+                  <Skisse navn={p.skisse} className="h-auto w-full" />
+                  <p className="merke mt-3 flex flex-wrap justify-between gap-x-4 border-t-2 border-blekk pt-2 text-dempet">
+                    <span>{p.type}</span>
+                    <span>Ikke i målestokk</span>
+                  </p>
+                </Kort>
+              </div>
             </div>
           </article>
         ))}

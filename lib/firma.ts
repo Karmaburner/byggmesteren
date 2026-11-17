@@ -28,9 +28,30 @@ export const apningstider = [
 ];
 
 export const folk = [
-  { initialer: "SH", navn: "Sigurd Haugen", rolle: "Byggmester", fakta: "Mesterbrev 2009" },
-  { initialer: "RL", navn: "Ragnhild Lie", rolle: "Tømrer", fakta: "Svennebrev 2016" },
-  { initialer: "JM", navn: "Jonas Moen", rolle: "Lærling", fakta: "Andre året" },
+  {
+    initialer: "SH",
+    navn: "Sigurd Haugen",
+    rolle: "Byggmester",
+    fakta: "Mesterbrev 2009",
+    foto: "sigurd",
+    fotoAlt: "Sigurd Haugen i mørk arbeidsjakke foran et reisverk, med grått hår og skjegg.",
+  },
+  {
+    initialer: "RL",
+    navn: "Ragnhild Lie",
+    rolle: "Tømrer",
+    fakta: "Svennebrev 2016",
+    foto: "ragnhild",
+    fotoAlt: "Ragnhild Lie i grå strikkegenser og arbeidsbukse foran et reisverk.",
+  },
+  {
+    initialer: "JM",
+    navn: "Jonas Moen",
+    rolle: "Lærling",
+    fakta: "Andre året",
+    foto: "jonas",
+    fotoAlt: "Jonas Moen, ung lærling i svart arbeidsjakke, smiler foran et reisverk.",
+  },
 ];
 
 // Eksempelet som følges gjennom hele forsiden: ett tilbygg på 4,2 × 6 meter.
@@ -114,7 +135,8 @@ export const tjenester = [
     nr: "02",
     navn: "Rehabilitering",
     tittel: "Fra slitt til solid",
-    tekst: "Eldre hus trenger folk som ser hva som skjuler seg bak panelet. Vi bytter det som må byttes og lar resten stå.",
+    tekst:
+      "Eldre hus trenger folk som ser hva som skjuler seg bak panelet. Vi bytter det som må byttes og lar resten stå.",
     fra: "Pris etter befaring",
     skisse: "snitt",
   },
@@ -138,7 +160,8 @@ export const tjenester = [
     nr: "05",
     navn: "Nybygg",
     tittel: "Fra tomt til hjem",
-    tekst: "Enebolig eller hytte fra grunnmur til nøkkel. Vi bygger etter arkitektens tegninger eller hjelper deg å få dem laget.",
+    tekst:
+      "Enebolig eller hytte fra grunnmur til nøkkel. Vi bygger etter arkitektens tegninger eller hjelper deg å få dem laget.",
     fra: "Pris etter tegning",
     skisse: "snitt",
   },
@@ -152,6 +175,8 @@ export const prosjekter = [
     tittel: "Ny stue mot hagen",
     sted: "Haugsbygd",
     skisse: "tilbygg",
+    foto: "tilbygg-ferdig",
+    fotoAlt: "Ferdig tilbygg med stående trekledning og store skyvedører i glass, inntil et hvitt hus med hage.",
     fakta: [
       { navn: "Areal", verdi: "25 m²" },
       { navn: "Byggetid", verdi: "9 uker" },
@@ -166,6 +191,8 @@ export const prosjekter = [
     tittel: "Tømmerhus fra 1924",
     sted: "Tyristrand",
     skisse: "snitt",
+    foto: "tommerhus",
+    fotoAlt: "Mørkt, gammelt tømmerhus med hvite vinduer og liten veranda, med fjorden i bakgrunnen.",
     fakta: [
       { navn: "Areal", verdi: "140 m²" },
       { navn: "Byggetid", verdi: "5 måneder" },
@@ -180,6 +207,8 @@ export const prosjekter = [
     tittel: "Platting i to nivåer",
     sted: "Røyse",
     skisse: "terrasse",
+    foto: "terrasse",
+    fotoAlt: "Terrasse i lyst tre i to nivåer med trapp mellom, hagemøbler og utsikt mot fjorden.",
     fakta: [
       { navn: "Areal", verdi: "42 m²" },
       { navn: "Byggetid", verdi: "2 uker" },

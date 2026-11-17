@@ -400,7 +400,10 @@ export function Hero() {
     };
   }, []);
 
-  const aktiv = Math.max(0, trinn.findLastIndex((t) => p >= t.start));
+  const aktiv = Math.max(
+    0,
+    trinn.findLastIndex((t) => p >= t.start),
+  );
   const h = hoyder(p);
   const hoyde = (h.g + h.hw + h.r).toFixed(1).replace(".", ",");
 
@@ -439,7 +442,9 @@ export function Hero() {
                 <div className="relative mt-11">
                   <span
                     className="merke absolute bottom-full mb-1.5 -translate-x-1/2 whitespace-nowrap bg-gul px-2 py-0.5 text-gul-tekst"
-                    style={{ left: `clamp(3.2rem, ${(p * 100).toFixed(1)}%, calc(100% - 3.2rem))` }}
+                    style={{
+                      left: `clamp(3.2rem, ${(p * 100).toFixed(1)}%, calc(100% - 3.2rem))`,
+                    }}
                   >
                     Høyde {hoyde} m
                   </span>
@@ -452,11 +457,17 @@ export function Hero() {
                       <span
                         key={t.navn}
                         className="tommestokk h-3 overflow-hidden bg-blekk/20"
-                        style={{ flexGrow: t.slutt - t.start, flexBasis: 0, minWidth: "1.5rem" }}
+                        style={{
+                          flexGrow: t.slutt - t.start,
+                          flexBasis: 0,
+                          minWidth: "1.5rem",
+                        }}
                       >
                         <span
                           className="block h-full origin-left bg-rod"
-                          style={{ transform: `scaleX(${mellom(p, t.start, t.slutt).toFixed(3)})` }}
+                          style={{
+                            transform: `scaleX(${mellom(p, t.start, t.slutt).toFixed(3)})`,
+                          }}
                         />
                       </span>
                     ))}

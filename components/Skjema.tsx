@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { tjenester } from "@/lib/firma";
 
-const felt =
-  "mt-2 block min-h-12 w-full border-2 border-blekk bg-white px-3 py-2 text-blekk placeholder:text-dempet";
+const felt = "mt-2 block min-h-12 w-full border-2 border-blekk bg-white px-3 py-2 text-blekk placeholder:text-dempet";
 
 // Demoskjema. Sender ingenting, men viser hvordan en ekte side ville svart.
 export function Skjema() {

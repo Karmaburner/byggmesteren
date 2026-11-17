@@ -56,8 +56,8 @@ export function Footer() {
       </div>
       <div className="border-t border-kritt/40">
         <p className="mx-auto w-full max-w-6xl px-5 py-5 sm:px-8">
-          Byggmesteren i Hringariki finnes ikke. Navn, priser, prosjekter og omtaler er oppdiktet. Siden er en demo
-          laget av{" "}
+          Byggmesteren i Hringariki finnes ikke. Navn, priser, prosjekter og omtaler er oppdiktet, og bildene er laget
+          med KI. Siden er en demo laget av{" "}
           <a href="https://lilitlabs.com" className="font-bold text-kritt underline">
             Lilit Labs
           </a>

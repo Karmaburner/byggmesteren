@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { eksempel, kr, steg } from "@/lib/firma";
 import { Tilbygg } from "@/components/Tegninger";
-import { Avsnitt, Eksempelmerke, Kort } from "@/components/Felles";
+import { Avsnitt, Eksempelmerke, Foto, Kort } from "@/components/Felles";
 
 // Ett tilbygg fulgt gjennom fem steg.
 // Bred skjerm: tegningen står fast til venstre og bytter lag når et nytt steg kommer midt i vinduet.
@@ -73,6 +73,20 @@ export function Fortelling() {
             <p className="mt-5 max-w-xl">{s.tekst}</p>
 
             {i === 2 && <Kalkyle />}
+            {i === 3 && (
+              <Foto
+                navn="tilbygg-bygging"
+                alt="Tilbygget under bygging: reisverk og sperrer i lyst trevirke er reist inntil det hvite huset."
+                className="mt-7 max-w-xl"
+              />
+            )}
+            {i === 4 && (
+              <Foto
+                navn="tilbygg-ferdig"
+                alt="Det samme tilbygget ferdig, med stående trekledning og store skyvedører i glass mot hagen."
+                className="mt-7 max-w-xl"
+              />
+            )}
 
             <div className="mt-7 max-w-xl border-l-4 border-rod pl-5">
               <p className="merke">Her kommer vi inn</p>
@@ -135,7 +149,10 @@ function Kalkyle() {
       <p className="mt-4 font-mono text-base">
         4,2 m × 6 m = 25,2 m² × {kr(eksempel.kvmPris)} = {kr(eksempel.sum)}
       </p>
-      <p className="mt-2 text-base text-dempet">Tallene er et eksempel og ikke et tilbud.</p>
+      <p className="mt-2 text-base text-dempet">
+        Tallene er et eksempel og ikke et tilbud. Tilbygg starter på 30 000 kr per m². Dette har store vinduer mot vest
+        og ligger derfor høyere.
+      </p>
     </Kort>
   );
 }
