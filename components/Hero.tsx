@@ -411,10 +411,10 @@ export function Hero() {
     <>
       <div ref={ytre} className="h-[260svh] motion-reduce:h-auto">
         <div className="sticky top-0 flex h-[100svh] flex-col overflow-hidden motion-reduce:static motion-reduce:h-auto">
-          <div className="mx-auto grid min-h-0 w-full max-w-[88rem] flex-1 px-5 sm:px-8 lg:grid-cols-[minmax(0,6fr)_minmax(0,7fr)] lg:items-center lg:gap-6">
+          <div className="mx-auto grid min-h-0 w-full max-w-6xl flex-1 px-5 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-6">
             <div className="pt-6 lg:pt-0">
               <Avsnitt nr={1}>Byggmester i {firma.sted}</Avsnitt>
-              <h1 className="mt-5 text-[clamp(3.25rem,5.6vw,5.75rem)] leading-[0.98]">
+              <h1 className="mt-5 text-[clamp(3.25rem,5.2vw,5.25rem)] leading-[0.98]">
                 Tegnet først.
                 <br />
                 Bygget riktig.
@@ -424,7 +424,8 @@ export function Hero() {
                 <Innledning />
               </div>
             </div>
-            <div className="flex min-h-0 flex-col lg:h-full lg:py-6">
+            {/* Tegningen stikker ut til høyre for sidebredden på brede skjermer, opptil 8 rem. */}
+            <div className="flex min-h-0 flex-col lg:-mr-[clamp(0rem,calc((100vw-72rem)/2),8rem)] lg:h-full lg:py-6">
               <div className="min-h-0 flex-1">
                 <Hus p={p} />
               </div>
