@@ -9,21 +9,37 @@ import { Avsnitt, Eksempelmerke, Foto, Kort } from "@/components/Felles";
 // Bred skjerm: tegningen står fast til venstre og bytter lag når et nytt steg kommer midt i vinduet.
 // Smal skjerm: hvert steg har sin egen tegning over teksten.
 export function Fortelling() {
-  const [aktiv, setAktiv] = useState(1);
+  // fyll[i] er hvor langt midten av vinduet har kommet gjennom steg i, fra 0 til 1.
+  const [fyll, setFyll] = useState<number[]>(() => steg.map(() => 0));
   const refs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (treff) => {
-        for (const t of treff) {
-          if (t.isIntersecting) setAktiv(Number((t.target as HTMLElement).dataset.steg));
-        }
-      },
-      { rootMargin: "-45% 0px -45% 0px" },
-    );
-    refs.current.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
+    let ramme = 0;
+    const mal = () => {
+      ramme = 0;
+      const midt = window.innerHeight / 2;
+      const ny = refs.current.map((el) => {
+        if (!el) return 0;
+        const boks = el.getBoundingClientRect();
+        return Math.round(Math.min(1, Math.max(0, (midt - boks.top) / boks.height)) * 100) / 100;
+      });
+      setFyll((forrige) => (forrige.every((v, i) => v === ny[i]) ? forrige : ny));
+    };
+    const vedRulling = () => {
+      if (!ramme) ramme = requestAnimationFrame(mal);
+    };
+    vedRulling();
+    window.addEventListener("scroll", vedRulling, { passive: true });
+    window.addEventListener("resize", vedRulling);
+    return () => {
+      window.removeEventListener("scroll", vedRulling);
+      window.removeEventListener("resize", vedRulling);
+      if (ramme) cancelAnimationFrame(ramme);
+    };
   }, []);
+
+  // Aktivt steg er det siste midten av vinduet har nådd. Før det første er steg 1 aktivt.
+  const aktiv = Math.max(1, fyll.findLastIndex((v) => v > 0) + 1);
 
   return (
     <div className="grid gap-x-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
@@ -36,20 +52,38 @@ export function Fortelling() {
             </div>
             <Tilbygg steg={aktiv} className="mt-3 h-auto w-full" />
           </Kort>
-          <ol className="mt-4 flex flex-wrap gap-x-5 gap-y-2" aria-label="Stegene i fortellingen">
-            {steg.map((s, i) => (
-              <li key={s.nr}>
-                <a
-                  href={`#steg-${s.nr}`}
-                  aria-current={aktiv === i + 1 ? "step" : undefined}
-                  className={`merke block min-h-11 border-t-4 pt-2 no-underline ${
-                    aktiv === i + 1 ? "border-rod text-blekk" : "border-blekk/30 text-dempet"
+          {/* Fremdrift: tommestokken fylles jevnt mens du ruller gjennom stegene.
+              Det aktive leddet er bredest og viser navnet, de andre viser bare nummeret. */}
+          <ol className="mt-4 flex gap-1.5" aria-label="Stegene i fortellingen">
+            {steg.map((s, i) => {
+              const erAktiv = aktiv === i + 1;
+              return (
+                <li
+                  key={s.nr}
+                  className={`min-w-0 basis-0 transition-[flex-grow] duration-300 motion-reduce:transition-none ${
+                    erAktiv ? "grow-[3]" : "grow"
                   }`}
                 >
-                  {s.nr} {s.fase}
-                </a>
-              </li>
-            ))}
+                  <a
+                    href={`#steg-${s.nr}`}
+                    aria-current={erAktiv ? "step" : undefined}
+                    aria-label={`${s.nr} ${s.fase}`}
+                    className="block min-h-11 no-underline"
+                  >
+                    <span className="tommestokk block h-3 overflow-hidden bg-blekk/20">
+                      <span
+                        className="block h-full origin-left bg-rod"
+                        style={{ transform: `scaleX(${fyll[i]})` }}
+                      />
+                    </span>
+                    <span className={`merke mt-2 flex gap-2 whitespace-nowrap ${erAktiv ? "text-blekk" : "text-dempet"}`}>
+                      <span className={erAktiv ? "text-rod-mork" : ""}>{s.nr}</span>
+                      {erAktiv && <span className="glir-inn text-lg leading-none">{s.fase}</span>}
+                    </span>
+                  </a>
+                </li>
+              );
+            })}
           </ol>
         </div>
       </div>
