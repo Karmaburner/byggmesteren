@@ -131,7 +131,10 @@ function Kalkyle() {
               <th scope="row" className="py-2 pr-3 text-left font-normal">
                 {post.navn}
               </th>
-              <td className="py-2 pr-3 text-right font-mono text-base text-dempet">{post.andel} %</td>
+              {/* Tall og prosenttegn skal ikke deles på to linjer på smale skjermer. */}
+              <td className="whitespace-nowrap py-2 pr-3 text-right font-mono text-base text-dempet">
+                {post.andel}&nbsp;%
+              </td>
               <td className="whitespace-nowrap py-2 text-right font-mono text-base">{kr(post.sum)}</td>
             </tr>
           ))}
@@ -147,7 +150,9 @@ function Kalkyle() {
         </tfoot>
       </table>
       <p className="mt-4 font-mono text-base">
-        4,2 m × 6 m = 25,2 m² × {kr(eksempel.kvmPris)} = {kr(eksempel.sum)}
+        <span className="whitespace-nowrap">4,2 m × 6 m</span> = <span className="whitespace-nowrap">25,2 m²</span> ×{" "}
+        <span className="whitespace-nowrap">{kr(eksempel.kvmPris)}</span> ={" "}
+        <span className="whitespace-nowrap">{kr(eksempel.sum)}</span>
       </p>
       <p className="mt-2 text-base text-dempet">
         Tallene er et eksempel og ikke et tilbud. Tilbygg starter på 30 000 kr per m². Dette har store vinduer mot vest
